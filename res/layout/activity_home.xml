@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Main Menu"
+        android:text="@string/main_menu"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/white"
         android:textStyle="bold" />
@@ -27,23 +27,22 @@
         android:contentDescription="@string/app_name" >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/navigate"
             style="@color/gray"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:drawable/btn_default"
-            android:text="Navigate" />
+            android:text="@string/navigate" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/location"
             style="@color/gray"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:drawable/btn_default"
-            android:text="Location" />
-
+            android:text="@string/location" />
     </LinearLayout>
 
     <LinearLayout
@@ -53,23 +52,22 @@
         android:contentDescription="@string/app_name" >
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/troubleshoot"
             style="@color/gray"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:drawable/btn_default"
-            android:text="Troubleshoot" />
+            android:text="@string/troubleshoot" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/help"
             style="@color/gray"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:drawable/btn_default"
-            android:text="Help" />
-
+            android:text="@string/help" />
     </LinearLayout>
 
     <LinearLayout
@@ -79,13 +77,13 @@
         android:contentDescription="@string/app_name" >
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/settings"
             style="@color/gray"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:drawable/btn_default"
-            android:text="Settings" />
+            android:text="@string/settings" />
 
     </LinearLayout>
 
