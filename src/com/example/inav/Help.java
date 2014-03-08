@@ -34,62 +34,66 @@ public class Help extends Activity {
 		setContentView(R.layout.activity_help);
 
 		listContacts = (ListView) findViewById(R.id.ListView_Contacts);
-
 		Uri queryUri = ContactsContract.Contacts.CONTENT_URI;
 
 		String[] projection = new String[] { ContactsContract.Contacts._ID,
-				ContactsContract.Contacts.DISPLAY_NAME};
-		String selection = ContactsContract.Contacts.DISPLAY_NAME + " IS NOT NULL";
-
-		CursorLoader cursorLoader = new CursorLoader(this, queryUri,
-				projection, selection, null, null);
+				ContactsContract.Contacts.DISPLAY_NAME };
 		
+		String selection = ContactsContract.Contacts.DISPLAY_NAME
+				+ " IS NOT NULL";
+		selection += " AND " + ContactsContract.Contacts.HAS_PHONE_NUMBER
+				+ " = 1";
+		
+		String sortOrder = ContactsContract.CommonDataKinds.GroupMembership.DISPLAY_NAME
+				+ " COLLATE LOCALIZED ASC";
+		
+		CursorLoader cursorLoader = new CursorLoader(this, queryUri,
+				projection, selection, null, sortOrder);
+
 		Cursor cursor = cursorLoader.loadInBackground();
 
-		String[] from = { ContactsContract.Contacts._ID, ContactsContract.Contacts.DISPLAY_NAME};
-		int[] to = { android.R.id.text1, android.R.id.text1};
+		String[] from = { ContactsContract.Contacts._ID,
+				ContactsContract.Contacts.DISPLAY_NAME };
+		int[] to = { android.R.id.text1, android.R.id.text1 };
 
 		ListAdapter adapter = new SimpleCursorAdapter(this, R.layout.text_view,
 				cursor, from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 		listContacts.setAdapter(adapter);
 		listContacts.setOnItemClickListener(new OnItemClickListener() {
 
-		    @Override
-		    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		    	String name = (String)((Cursor)listContacts.getAdapter().getItem(position)).getString(0);
-		        
-		    	
-		    	ArrayList<String> phones = new ArrayList<String>();
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				String name = (String) ((Cursor) listContacts.getAdapter()
+						.getItem(position)).getString(0);
+				String toNum = null;
 
-		    	Cursor cursor = getContentResolver().query(
-		    	        CommonDataKinds.Phone.CONTENT_URI, 
-		    	        null, 
-		    	        CommonDataKinds.Phone.CONTACT_ID +" = ?", 
-		    	        new String[]{name}, null);
+				ArrayList<String> phones = new ArrayList<String>();
 
-		    	if (cursor.moveToNext()) 
-		    	{
-		    	    phones.add(cursor.getString(cursor.getColumnIndex(CommonDataKinds.Phone.NUMBER)));
-		    	} 
+				Cursor cursor = getContentResolver().query(
+						CommonDataKinds.Phone.CONTENT_URI, null,
+						CommonDataKinds.Phone.CONTACT_ID + " = ?",
+						new String[] { name }, null);
 
-		    	cursor.close();
-		    	String toNum = phones.toString().substring(1, phones.toString().length()-1);
-		    	String msg = "Test:  Help, I've fallen and I can't get up!";
-		    	SmsManager smsManager = SmsManager.getDefault();
-		    	smsManager.sendTextMessage(toNum, null, msg, null, null);
-		    	
-		    	
-		    	AlertDialog.Builder adb = new AlertDialog.Builder(
-		        		Help.this);
-		        adb.setTitle("ListView OnClick");
-		        adb.setMessage("Selected Item is = "
-		        + phones.toString());
-		        adb.setPositiveButton("Ok", null);
-		        adb.show();    
+				if (cursor.moveToNext()) {
+					phones.add(cursor.getString(cursor
+							.getColumnIndex(CommonDataKinds.Phone.NUMBER)));
+				}
 
-		        // Don't store the item returned by this method in Contact object.
-		    }
-		    
+				cursor.close();
+				toNum = phones.toString().substring(1,
+						phones.toString().length() - 1);
+				String msg = "Test:  Automatic SMS Message for iNav HELP Function!";
+				SmsManager smsManager = SmsManager.getDefault();
+				smsManager.sendTextMessage(toNum, null, msg, null, null);
+
+				AlertDialog.Builder adb = new AlertDialog.Builder(Help.this);
+				adb.setTitle("ListView OnClick");
+				adb.setMessage("Selected Item is = " + toNum);
+				adb.setPositiveButton("Ok", null);
+				adb.show();
+			}
+
 		}
 
 		);
