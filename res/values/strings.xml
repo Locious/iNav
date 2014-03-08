@@ -14,5 +14,6 @@
     <string name="location">Location</string>
     <string name="temporary_page">Temporary Page</string>
     <string name="go_back">Go Back</string>
+    <string name="title_activity_navigate">Navigate</string>
 
 </resources>

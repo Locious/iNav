@@ -7,7 +7,9 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="18" />
-	<uses-permission android:name="android.permission.VIBRATE"/>
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -24,11 +26,19 @@
         </activity>
         <activity
             android:name="com.example.inav.Home"
-            android:label="@string/app_name" >            
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.example.inav.TempPage"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.example.inav.DeadReckon"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.example.inav.Navigate"
+            android:label="@string/title_activity_navigate" >
         </activity>
     </application>
 

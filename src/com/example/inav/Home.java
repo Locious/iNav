@@ -48,7 +48,7 @@ public class Home extends Activity {
 			@Override
 			public void onClick(View view){
 				vibe.vibrate(80);
-				Intent ni = new Intent(Home.this, TempPage.class);
+				Intent ni = new Intent(Home.this, DeadReckon.class);
 				Home.this.startActivity(ni);
 			}
 		});
@@ -68,7 +68,7 @@ public class Home extends Activity {
 			@Override
 			public void onClick(View view){
 				vibe.vibrate(80);
-				Intent ni = new Intent(Home.this, TempPage.class);
+				Intent ni = new Intent(Home.this, Navigate.class);
 				Home.this.startActivity(ni);
 			}
 		});
