@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/91/trunk/neworg/src/edu/vt/dr/utilities
+END
+EventHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/87/trunk/neworg/src/edu/vt/dr/utilities/EventHandler.java
+END
+FloatPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/87/trunk/neworg/src/edu/vt/dr/utilities/FloatPoint.java
+END
+LocationUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/91/trunk/neworg/src/edu/vt/dr/utilities/LocationUtil.java
+END
+SensorUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/87/trunk/neworg/src/edu/vt/dr/utilities/SensorUtil.java
+END
+AccelerationHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/87/trunk/neworg/src/edu/vt/dr/utilities/AccelerationHandler.java
+END
+RotationHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/87/trunk/neworg/src/edu/vt/dr/utilities/RotationHandler.java
+END
