@@ -8,7 +8,7 @@ import android.os.Handler;
 import android.content.Intent;
 
 public class Splash extends Activity {
-	private static int STO = 4500;
+	private static int STO = 500;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

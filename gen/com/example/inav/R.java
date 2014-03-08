@@ -30,24 +30,28 @@ public final class R {
         public static final int inav_logo=0x7f020001;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f090000;
-        public static final int RelativeLayout1=0x7f09000a;
-        public static final int action_settings=0x7f09000c;
-        public static final int goback=0x7f09000b;
-        public static final int help=0x7f090005;
-        public static final int imgLogo=0x7f090007;
-        public static final int location=0x7f090003;
-        public static final int navigate=0x7f090002;
-        public static final int progressBar1=0x7f090008;
-        public static final int settings=0x7f090006;
+        public static final int LinearLayout1=0x7f090004;
+        public static final int ListView_Contacts=0x7f090002;
+        public static final int RelativeLayout1=0x7f090000;
+        public static final int action_settings=0x7f09000e;
+        public static final int button1=0x7f090003;
+        public static final int goback=0x7f09000d;
+        public static final int help=0x7f090008;
+        public static final int imgLogo=0x7f09000a;
+        public static final int location=0x7f090006;
+        public static final int navigate=0x7f090005;
+        public static final int progressBar1=0x7f09000b;
+        public static final int settings=0x7f090009;
         public static final int textView1=0x7f090001;
-        public static final int textView2=0x7f090009;
-        public static final int troubleshoot=0x7f090004;
+        public static final int textView2=0x7f09000c;
+        public static final int troubleshoot=0x7f090007;
     }
     public static final class layout {
-        public static final int activity_home=0x7f030000;
-        public static final int activity_splash=0x7f030001;
-        public static final int activity_temppage=0x7f030002;
+        public static final int activity_help=0x7f030000;
+        public static final int activity_home=0x7f030001;
+        public static final int activity_splash=0x7f030002;
+        public static final int activity_temppage=0x7f030003;
+        public static final int text_view=0x7f030004;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -65,6 +69,7 @@ public final class R {
         public static final int navigate=0x7f060006;
         public static final int settings=0x7f060007;
         public static final int temporary_page=0x7f06000b;
+        public static final int this_is_temporary_the_contact_listing_will_not_always_be_here_eventually_it_will_automatically_text_call_a_primary_contact_=0x7f06000d;
         public static final int troubleshoot=0x7f060009;
     }
     public static final class style {
