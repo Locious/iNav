@@ -34,7 +34,7 @@ public final class R {
         public static final int ListView_Contacts=0x7f090002;
         public static final int RelativeLayout1=0x7f090000;
         public static final int action_settings=0x7f09000e;
-        public static final int button1=0x7f090003;
+        public static final int go_help=0x7f090003;
         public static final int goback=0x7f09000d;
         public static final int help=0x7f090008;
         public static final int imgLogo=0x7f09000a;

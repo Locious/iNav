@@ -14,16 +14,20 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.database.Cursor;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 public class Help extends Activity {
 
 	ListView listContacts;
+	Button go;
+	String phoneNumber;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,19 +38,20 @@ public class Help extends Activity {
 		setContentView(R.layout.activity_help);
 
 		listContacts = (ListView) findViewById(R.id.ListView_Contacts);
+		go = (Button) findViewById(R.id.go_help);
 		Uri queryUri = ContactsContract.Contacts.CONTENT_URI;
 
 		String[] projection = new String[] { ContactsContract.Contacts._ID,
 				ContactsContract.Contacts.DISPLAY_NAME };
-		
+
 		String selection = ContactsContract.Contacts.DISPLAY_NAME
 				+ " IS NOT NULL";
 		selection += " AND " + ContactsContract.Contacts.HAS_PHONE_NUMBER
 				+ " = 1";
-		
+
 		String sortOrder = ContactsContract.CommonDataKinds.GroupMembership.DISPLAY_NAME
 				+ " COLLATE LOCALIZED ASC";
-		
+
 		CursorLoader cursorLoader = new CursorLoader(this, queryUri,
 				projection, selection, null, sortOrder);
 
@@ -79,24 +84,32 @@ public class Help extends Activity {
 					phones.add(cursor.getString(cursor
 							.getColumnIndex(CommonDataKinds.Phone.NUMBER)));
 				}
-
 				cursor.close();
 				toNum = phones.toString().substring(1,
 						phones.toString().length() - 1);
+				phoneNumber = toNum;
+
+			}
+
+		});
+		
+		go.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View view){
 				String msg = "Test:  Automatic SMS Message for iNav HELP Function!";
 				SmsManager smsManager = SmsManager.getDefault();
-				smsManager.sendTextMessage(toNum, null, msg, null, null);
+				smsManager.sendTextMessage(phoneNumber, null, msg, null, null);
 
 				AlertDialog.Builder adb = new AlertDialog.Builder(Help.this);
 				adb.setTitle("ListView OnClick");
-				adb.setMessage("Selected Item is = " + toNum);
+				adb.setMessage("Selected Item is = " + phoneNumber);
 				adb.setPositiveButton("Ok", null);
 				adb.show();
 			}
 
-		}
+		});
+		
 
-		);
 	}
 
 }
