@@ -46,6 +46,8 @@ public class Navigate extends Activity implements SensorEventListener {
 		
 	}
 
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.navigate, menu);
