@@ -31,7 +31,7 @@
         android:gravity="center" >
 
     </ListView>
-        
+      
     <Button
         android:id="@+id/setContact"
         android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
         android:layout_below="@+id/Contacts"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="38dp"
-        android:text="@string/set_emergency_contact" />
+        android:text="Set Emergency Contact" />
 
     <ToggleButton
         android:id="@+id/sound"
@@ -48,7 +48,7 @@
         android:layout_below="@+id/setContact"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
-        android:text="@string/sound" />
+        android:text="Sound" />
 
     <TextView
         android:id="@+id/textView2"
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/sound"
         android:layout_centerHorizontal="true"
-        android:text="@string/sound_"
+        android:text="Sound:"
         android:textColor="@color/white"
         android:textStyle="bold" />
 
