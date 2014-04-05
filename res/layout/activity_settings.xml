@@ -28,7 +28,8 @@
         android:layout_height="250dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView1"
-        android:gravity="center" >
+        android:gravity="center"
+        android:background="@drawable/list_item_selector" >
 
     </ListView>
       
@@ -39,26 +40,29 @@
         android:layout_below="@+id/Contacts"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="38dp"
+        android:background="@android:drawable/btn_default"
         android:text="Set Emergency Contact" />
-
-    <ToggleButton
-        android:id="@+id/sound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/setContact"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:text="Sound" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sound"
+        android:layout_below="@+id/setContact"
         android:layout_centerHorizontal="true"
-        android:text="Sound:"
+        android:text="Silent Mode"
         android:textColor="@color/white"
         android:textStyle="bold" />
+    
+    <ToggleButton
+        android:id="@+id/sound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:background="@android:drawable/btn_default"
+        android:text="Sound" />
+
 
 </RelativeLayout>
 
