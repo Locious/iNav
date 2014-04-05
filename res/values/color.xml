@@ -3,4 +3,6 @@
     <color name = 'black'>	#000000</color>
     <color name = 'gray'>	#CCCCCC</color>
     <color name = 'white'> 	#FFFFFF</color>
+    <drawable name="focused">#000FFF</drawable>
+    <drawable name="selected">#000FFF</drawable>
 </resources>
