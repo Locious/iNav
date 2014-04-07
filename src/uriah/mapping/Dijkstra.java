@@ -28,8 +28,6 @@ public class Dijkstra {
 					v.minDistance = distanceThroughU;
 					v.previous = poi;
 					vertexQueue.add(v);
-					System.out.println(p.distance+" dir " +p.direction);
-					
 				}
 			}
 		}

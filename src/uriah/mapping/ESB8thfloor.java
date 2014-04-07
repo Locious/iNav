@@ -20,10 +20,6 @@ import java.util.List;
 public class ESB8thfloor {
 
 	Dijkstra di = new Dijkstra();
-	List<PointOfInterest> path = null;
-	
-	PointOfInterest start = null;
-	PointOfInterest end = null;
 
 	PointOfInterest elevators = new PointOfInterest("elevators");
 	PointOfInterest class0 = new PointOfInterest("800");
@@ -36,6 +32,13 @@ public class ESB8thfloor {
 	PointOfInterest i5 = new PointOfInterest("intersection 5");
 	PointOfInterest i6 = new PointOfInterest("intersection 6");
 	PointOfInterest i7 = new PointOfInterest("intersection 7");
+
+	PointOfInterest[] vertices = { elevators, class0, class1, class2, class3,
+			i2, i3, i4, i5, i6, i7 };
+	List<PointOfInterest> path = null;
+
+	PointOfInterest start = null;
+	PointOfInterest end = null;
 
 	public ESB8thfloor() {
 
@@ -61,14 +64,10 @@ public class ESB8thfloor {
 				new Path(class3, 6, "West") };
 		i7.adjacencies = new Path[] { new Path(i5, 5, "North"),
 				new Path(i3, 8, "East") };
-		
+
 	}
 
 	public String getDirections(String s, String e) {
-		
-		
-		PointOfInterest[] vertices = { elevators, class0, class1, class2,
-				class3, i2, i3, i4, i5, i6, i7 };
 
 		for (PointOfInterest v : vertices) {
 			if (v.toString().equals(s)) {
@@ -79,27 +78,37 @@ public class ESB8thfloor {
 			}
 		}
 		di.setStart(start);
-		String r1 = "Distance to " + end + ": " + end.minDistance + "\n";
 		this.path = di.findEnd(end);
-		
-		String r2 = "Path: " + path +" distance"+end.minDistance+ "\n";
-		return r1 + r2;
-		
-	}
-	
+		String r1 = "Distance to " + end + ": " + end.minDistance + "\n";
 
-	public List<PointOfInterest> getPath() {
-		return path;
+		String r2 = "Path: " + path + " distance" + end.minDistance + "\n";
+		
+		
+		displayPath();
+		return r1 + r2;
+
+	}
+
+	public String getPath(PointOfInterest start, PointOfInterest end) {
+
+		for (int i = 0;; i++) {
+			if (start.adjacencies[i].destination == end) {
+				return "go " + start.adjacencies[i].distance + " feet "
+						+ start.adjacencies[i].direction;
+			}
+		}
+
 	}
 
 	public String displayPath() {
-		String r1 = "Distance to " + end + ": " + end.minDistance + "\n";
 		this.path = di.findEnd(end);
-		
-		String r2 = "Path: " + path +" distance"+end.minDistance+ "\n";
-		return r1 + r2;
-		
+		String rValue = "";
+		for (int i = 1; i < path.size(); i++) {
+			System.out.println(getPath(path.get(i-1), path.get(i)));
+
+		}
+		return rValue;
+
 	}
-	
-	
+
 }
