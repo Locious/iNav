@@ -26,24 +26,30 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
+        public static final int focused=0x7f020004;
         public static final int gbtn=0x7f020000;
         public static final int ic_launcher=0x7f020001;
         public static final int inav_logo=0x7f020002;
+        public static final int list_item_selector=0x7f020003;
+        public static final int selected=0x7f020005;
     }
     public static final class id {
+        public static final int Contacts=0x7f09000b;
         public static final int LinearLayout1=0x7f090004;
         public static final int ListView_Contacts=0x7f090002;
         public static final int RelativeLayout1=0x7f090000;
-        public static final int action_settings=0x7f09000f;
+        public static final int action_settings=0x7f090012;
         public static final int go_help=0x7f090003;
-        public static final int goback=0x7f09000e;
+        public static final int goback=0x7f090011;
         public static final int help=0x7f090008;
-        public static final int imgLogo=0x7f09000b;
+        public static final int imgLogo=0x7f09000f;
         public static final int location=0x7f090006;
         public static final int nav=0x7f09000a;
         public static final int navigate=0x7f090005;
-        public static final int progressBar1=0x7f09000c;
+        public static final int progressBar1=0x7f090010;
+        public static final int setContact=0x7f09000c;
         public static final int settings=0x7f090009;
+        public static final int sound=0x7f09000e;
         public static final int textView1=0x7f090001;
         public static final int textView2=0x7f09000d;
         public static final int troubleshoot=0x7f090007;
@@ -53,13 +59,15 @@ public final class R {
         public static final int activity_home=0x7f030001;
         public static final int activity_main=0x7f030002;
         public static final int activity_navigate=0x7f030003;
-        public static final int activity_splash=0x7f030004;
-        public static final int activity_temppage=0x7f030005;
-        public static final int text_view=0x7f030006;
+        public static final int activity_settings=0x7f030004;
+        public static final int activity_splash=0x7f030005;
+        public static final int activity_temppage=0x7f030006;
+        public static final int text_view=0x7f030007;
     }
     public static final class menu {
         public static final int main=0x7f080000;
         public static final int navigate=0x7f080001;
+        public static final int settings=0x7f080002;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;

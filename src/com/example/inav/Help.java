@@ -5,6 +5,7 @@ import android.preference.PreferenceManager;
 import android.telephony.SmsManager;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,6 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class Help extends Activity {
 
@@ -33,15 +35,19 @@ public class Help extends Activity {
 		go.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View view){
+				Context context = getApplicationContext();
+				CharSequence text;
+				int duration = Toast.LENGTH_SHORT;
 				String msg = "Test:  Automatic SMS Message for iNav HELP Function!";
-				SmsManager smsManager = SmsManager.getDefault();
-				smsManager.sendTextMessage(phoneNumber, null, msg, null, null);
-
-				AlertDialog.Builder adb = new AlertDialog.Builder(Help.this);
-				adb.setTitle("ListView OnClick");
-				adb.setMessage("Selected Item is = " + phoneNumber);
-				adb.setPositiveButton("Ok", null);
-				adb.show();
+				if(phoneNumber != null) {
+					SmsManager smsManager = SmsManager.getDefault();
+					smsManager.sendTextMessage(phoneNumber, null, msg, null, null);
+					text = "Selected Item is = " + phoneNumber;
+				} else {
+					text = "Please select a contact";
+				}
+				Toast toast = Toast.makeText(context, text, duration);
+				toast.show();
 			}
 
 		});
