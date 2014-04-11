@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.telephony.SmsManager;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.View;
@@ -39,12 +38,12 @@ public class Help extends Activity {
 				CharSequence text;
 				int duration = Toast.LENGTH_SHORT;
 				String msg = "Test:  Automatic SMS Message for iNav HELP Function!";
-				if(phoneNumber != null) {
+				if(phoneNumber != null && phoneNumber != "") {
 					SmsManager smsManager = SmsManager.getDefault();
 					smsManager.sendTextMessage(phoneNumber, null, msg, null, null);
-					text = "Selected Item is = " + phoneNumber;
+					text = "Emergency message sent to " + phoneNumber;
 				} else {
-					text = "Please select a contact";
+					text = "Please set an emergency contact";
 				}
 				Toast toast = Toast.makeText(context, text, duration);
 				toast.show();

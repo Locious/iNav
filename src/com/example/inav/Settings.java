@@ -7,13 +7,13 @@ import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.view.Window;
@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ToggleButton;
 
@@ -68,6 +69,7 @@ public class Settings extends Activity {
 		ListAdapter adapter = new SimpleCursorAdapter(this, R.layout.text_view,
 				cursor, from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 		listContacts.setAdapter(adapter);
+		listContacts.setItemsCanFocus(true);
 		listContacts.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -90,6 +92,11 @@ public class Settings extends Activity {
 				toNum = phones.toString().substring(1,
 						phones.toString().length() - 1);
 				phoneNumber = toNum;
+	            Context context = getApplicationContext();
+				CharSequence text = phoneNumber + " was selected";
+				int duration = Toast.LENGTH_SHORT;
+				Toast toast = Toast.makeText(context, text, duration);
+				toast.show();
 
 			}
 
@@ -99,15 +106,19 @@ public class Settings extends Activity {
 		go.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View view){
-	            SharedPreferences.Editor editor = pref.edit();
-	            editor.putString("emergency_contact", phoneNumber);
-	            editor.commit();
-	            
-				AlertDialog.Builder adb = new AlertDialog.Builder(Settings.this);
-				adb.setTitle("ListView OnClick");
-				adb.setMessage("Selected Item is = " + phoneNumber);
-				adb.setPositiveButton("Ok", null);
-				adb.show();
+	            Context context = getApplicationContext();
+				CharSequence text;
+				if(phoneNumber != null) {
+		            SharedPreferences.Editor editor = pref.edit();
+		            editor.putString("emergency_contact", phoneNumber);
+		            editor.commit();
+					text = "Emergency Contact Number is " + phoneNumber;
+				} else {
+					text = "Please select a contact";
+				}
+				int duration = Toast.LENGTH_SHORT;
+				Toast toast = Toast.makeText(context, text, duration);
+				toast.show();
 			}
 
 		});
@@ -122,6 +133,11 @@ public class Settings extends Activity {
 	            SharedPreferences.Editor editor = pref.edit();
 	            editor.putBoolean("silentMode", isChecked);
 	            editor.commit();
+	            Context context = getApplicationContext();
+				CharSequence text = isChecked ? "Silent Mode Enabled" : "Silent Mode Disabled";
+				int duration = Toast.LENGTH_SHORT;
+				Toast toast = Toast.makeText(context, text, duration);
+				toast.show();
 	        }
 	    });
 		
