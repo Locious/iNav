@@ -14,6 +14,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
@@ -21,7 +23,7 @@ import android.widget.Toast;
 public class ConnectTest extends Activity {
   private static final String TAG = "LEDOnOff";
    
-  Button btnOn, btnOff;
+  Button btnOn, btnOff, sBtnOn, sBtnOff, rBtnOn, rBtnOff;
    
   private static final int REQUEST_ENABLE_BT = 1;
   private BluetoothAdapter btAdapter = null;
@@ -39,34 +41,75 @@ public class ConnectTest extends Activity {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
- 
+    this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+	this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     Log.d(TAG, "In onCreate()");
  
     setContentView(R.layout.activity_motors);
  
     btnOn = (Button) findViewById(R.id.btnOn);
     btnOff = (Button) findViewById(R.id.btnOff);
+    sBtnOn = (Button) findViewById(R.id.stopOn);
+    sBtnOff = (Button) findViewById(R.id.stopOff);
+    rBtnOn = (Button) findViewById(R.id.rightOn);
+    rBtnOff = (Button) findViewById(R.id.rightOff);
      
     btAdapter = BluetoothAdapter.getDefaultAdapter();
     checkBTState();
  
     btnOn.setOnClickListener(new OnClickListener() {
       public void onClick(View v) {
-        sendData("1");
+        sendData("0");
         Toast msg = Toast.makeText(getBaseContext(),
-            "You have clicked On", Toast.LENGTH_SHORT);
+            "You have clicked Left On", Toast.LENGTH_SHORT);
         msg.show();
       }
     });
  
     btnOff.setOnClickListener(new OnClickListener() {
       public void onClick(View v) {
-        sendData("0");
+        sendData("1");
         Toast msg = Toast.makeText(getBaseContext(),
-            "You have clicked Off", Toast.LENGTH_SHORT);
+            "You have clicked Left Off", Toast.LENGTH_SHORT);
         msg.show();
       }
     });
+    
+    sBtnOn.setOnClickListener(new OnClickListener() {
+        public void onClick(View v) {
+          sendData("2");
+          Toast msg = Toast.makeText(getBaseContext(),
+              "You have clicked Stop On", Toast.LENGTH_SHORT);
+          msg.show();
+        }
+      });
+    
+    sBtnOff.setOnClickListener(new OnClickListener() {
+        public void onClick(View v) {
+          sendData("3");
+          Toast msg = Toast.makeText(getBaseContext(),
+              "You have clicked Stop Off", Toast.LENGTH_SHORT);
+          msg.show();
+        }
+      });
+    
+    rBtnOn.setOnClickListener(new OnClickListener() {
+        public void onClick(View v) {
+          sendData("4");
+          Toast msg = Toast.makeText(getBaseContext(),
+              "You have clicked Right On", Toast.LENGTH_SHORT);
+          msg.show();
+        }
+      });
+    
+    rBtnOff.setOnClickListener(new OnClickListener() {
+        public void onClick(View v) {
+          sendData("5");
+          Toast msg = Toast.makeText(getBaseContext(),
+              "You have clicked Right Off", Toast.LENGTH_SHORT);
+          msg.show();
+        }
+      });
   }
    
   @Override

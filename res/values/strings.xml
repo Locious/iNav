@@ -21,5 +21,12 @@
     <string name="right">Right</string>
     <string name="turn_led_on">Turn LED On</string>
     <string name="turn_led_off">Turn LED Off</string>
+    <string name="LeftOn">Left On</string>
+    <string name="LeftOff">Left Off</string>
+    <string name="stopBtn">Stop On</string>
+    <string name="StopOff">Stop Off</string>
+    <string name="RightOn">Right On</string>
+    <string name="RightOff">Right Off</string>
+    <string name="motorTest">Motor Test</string>
 
 </resources>
