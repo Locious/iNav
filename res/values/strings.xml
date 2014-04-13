@@ -16,5 +16,6 @@
     <string name="go_back">Go Back</string>
     <string name="title_activity_navigate">Navigate</string>
     <string name="this_is_temporary_the_contact_listing_will_not_always_be_here_eventually_it_will_automatically_text_call_a_primary_contact_">This is temporary, the contact listing will not always be here, eventually this page will automatically text / call a primary contact.</string>
+    <string name="title_activity_building_owner">BuildingOwnerActivity</string>
 
 </resources>
