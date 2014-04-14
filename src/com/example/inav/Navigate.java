@@ -24,11 +24,11 @@ public class Navigate extends Activity implements SensorEventListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		TextView textView = (TextView)findViewById(R.id.textView1);
-		 String text= getDirectionsToPrint();
-		 textView.setText(text);
-		 textView.setMovementMethod(new ScrollingMovementMethod());
-		 setContentView(textView);
+		//TextView textView = (TextView)findViewById(R.id.textView1);
+		 //String text= getDirectionsToPrint();
+		// textView.setText(text);
+		// textView.setMovementMethod(new ScrollingMovementMethod());
+		// setContentView(textView);
 		setContentView(R.layout.activity_navigate);
 		sensor_manager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		accelerometer = (Sensor) sensor_manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
