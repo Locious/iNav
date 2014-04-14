@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Navigate extends Activity implements SensorEventListener {
 
@@ -23,6 +24,11 @@ public class Navigate extends Activity implements SensorEventListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		TextView textView = (TextView)findViewById(R.id.textView1);
+		 String text= getDirectionsToPrint();
+		 textView.setText(text);
+		 textView.setMovementMethod(new ScrollingMovementMethod());
+		 setContentView(textView);
 		setContentView(R.layout.activity_navigate);
 		sensor_manager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		accelerometer = (Sensor) sensor_manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -69,4 +75,8 @@ public class Navigate extends Activity implements SensorEventListener {
 		}
 	}
 
+	public void setDirectionText(String Dir){
+		TextView textView = (TextView)findViewById(R.id.textView1);
+		textView.setText(Dir);
+	}
 }
