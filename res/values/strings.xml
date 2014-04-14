@@ -17,5 +17,17 @@
     <string name="title_activity_navigate">Navigate</string>
     <string name="this_is_temporary_the_contact_listing_will_not_always_be_here_eventually_it_will_automatically_text_call_a_primary_contact_">This is temporary, the contact listing will not always be here, eventually this page will automatically text / call a primary contact.</string>
     <string name="title_activity_building_owner">BuildingOwnerActivity</string>
+    <string name="left">Left</string>
+    <string name="stop">Stop</string>
+    <string name="right">Right</string>
+    <string name="turn_led_on">Turn LED On</string>
+    <string name="turn_led_off">Turn LED Off</string>
+    <string name="LeftOn">Left On</string>
+    <string name="LeftOff">Left Off</string>
+    <string name="stopBtn">Stop On</string>
+    <string name="StopOff">Stop Off</string>
+    <string name="RightOn">Right On</string>
+    <string name="RightOff">Right Off</string>
+    <string name="motorTest">Motor Test</string>
 
 </resources>
