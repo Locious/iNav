@@ -1,5 +1,6 @@
 package com.example.inav;
 
+import uriah.mapping.*;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.app.Activity;
@@ -8,6 +9,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,7 +27,14 @@ public class Navigate extends Activity implements SensorEventListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		TextView textView = (TextView)findViewById(R.id.textView1);
-		 String text= getDirectionsToPrint();
+		
+		ESB800 floor= new ESB800();
+		floor.getPath("813", "841C");//TODO this has hard code
+		
+		
+		String text= floor.getDirections();
+		
+		
 		 textView.setText(text);
 		 textView.setMovementMethod(new ScrollingMovementMethod());
 		 setContentView(textView);
