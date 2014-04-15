@@ -59,7 +59,7 @@ public class DeadReckoningService extends Service{
 //	                }
 	                if (sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION) {
 	                	acc=event.values.clone();
-	                } if (pos != null){
+	                } if (acc != null){
 		                RealAcc[0] = acc[0];
 		                RealAcc[1] = acc[1];
 		                RealAcc[2] = acc[2];
