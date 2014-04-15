@@ -1,9 +1,14 @@
 package com.example.inav;
 
+import android.nfc.NdefMessage;
+import android.nfc.NdefRecord;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.os.Vibrator;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -13,13 +18,19 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+/*
+ * onResume based on the excellent tutorial by Jesse Chen
+ * http://www.jessechen.net/blog/how-to-nfc-on-the-android-platform/
+ */
 public class Navigate extends Activity implements SensorEventListener {
 
     private SensorManager sensor_manager;
     private Sensor accelerometer;
 	private float accel_vec[] = new float[3];
 	boolean nav_off = true;
+	String placeId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,5 +89,54 @@ public class Navigate extends Activity implements SensorEventListener {
 	public void setDirectionText(String Dir){
 		TextView textView = (TextView)findViewById(R.id.textView1);
 		textView.setText(Dir);
+	}
+	
+	
+	private NdefMessage[] getNdefMessages(Intent intent) {
+	    // Parse the intent
+	    NdefMessage[] msgs = null;
+	    String action = intent.getAction();
+	    if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(action)
+	        || NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) {
+	        Parcelable[] rawMsgs = 
+	            intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+	        if (rawMsgs != null) {
+	            msgs = new NdefMessage[rawMsgs.length];
+	            for (int i = 0; i < rawMsgs.length; i++) {
+	                msgs[i] = (NdefMessage) rawMsgs[i];
+	            }
+	        } else {
+	            // Unknown tag type
+	            byte[] empty = new byte[] {};
+	            NdefRecord record = 
+	                new NdefRecord(NdefRecord.TNF_UNKNOWN, empty, empty, empty);
+	            NdefMessage msg = new NdefMessage(new NdefRecord[] {
+	                record
+	            });
+	            msgs = new NdefMessage[] {
+	                msg
+	            };
+	        }
+	    } else {
+	        finish();
+	    }
+	    return msgs;
+	}
+	
+	
+	@Override
+	protected void onResume() {
+	    super.onResume();
+	    if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
+	        NdefMessage[] messages = getNdefMessages(getIntent());
+	        byte[] payload = messages[0].getRecords()[0].getPayload();
+	        placeId = new String(payload);
+
+            Context context = getApplicationContext();
+			CharSequence text = placeId + " was read";
+			int duration = Toast.LENGTH_SHORT;
+			Toast toast = Toast.makeText(context, text, duration);
+			toast.show();
+	    }
 	}
 }
