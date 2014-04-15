@@ -49,6 +49,11 @@
         <activity
             android:name="com.example.inav.Navigate"
             android:label="@string/title_activity_navigate" >
+	  <intent-filter>
+	    <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+	    <category android:name="android.intent.category.DEFAULT"/>
+	    <data android:mimeType="text/plain" />
+	  </intent-filter>
         </activity>
         <activity
             android:name="com.example.inav.Settings"
