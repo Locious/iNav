@@ -32,7 +32,7 @@ public class Navigate extends Activity implements SensorEventListener {
     private Sensor accelerometer;
 	private float accel_vec[] = new float[3];
 	boolean nav_off = true;
-	String placeId;
+	String placeId = "elevator";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class Navigate extends Activity implements SensorEventListener {
 		//setContentView(textView);
 		
 		ESB800 floor= new ESB800();
-		floor.getPath("elevator", "813");//TODO this has hard code
+		floor.getPath(placeId, "813");//TODO this has hard code
 		
 		
 		String text= floor.getDirections();
@@ -152,6 +152,19 @@ public class Navigate extends Activity implements SensorEventListener {
 			int duration = Toast.LENGTH_SHORT;
 			Toast toast = Toast.makeText(context, text, duration);
 			toast.show();
+			TextView textView = (TextView)findViewById(R.id.textView1);
+			//setContentView(textView);
+			
+			ESB800 floor= new ESB800();
+			floor.getPath(placeId, "813");//TODO this has hard code
+			
+			
+			String t = floor.getDirections();
+			if(t=="") {
+				textView.setText("You have arrived");
+			} else {
+				textView.setText(t);
+			}
 	    }
 	}
 }
