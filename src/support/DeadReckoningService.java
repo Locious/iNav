@@ -20,7 +20,7 @@ public class DeadReckoningService extends Service{
      float RealAcc[] = new float[3];
      float Distance[][] = new float[3][5];
      float DeltaDistance[] = new float[3];
-     Position p = new Position(0,0,0);
+     Position p = new Position(0,0,0,0);
 	@Override
 	public IBinder onBind(Intent arg0) {
 		// TODO Auto-generated method stub
@@ -76,6 +76,7 @@ public class DeadReckoningService extends Service{
 	    	FindDeltaDistance();
 	    }
 	    public void FindDeltaDistance(){
+	    	float Azimuth =0;
 	    	DeltaDistance[0] = 0;
 	    	DeltaDistance[1] = 0;
 	    	DeltaDistance[2] = 0;
@@ -84,6 +85,7 @@ public class DeadReckoningService extends Service{
 	    		DeltaDistance[1] += Distance[1][i];
 	    		DeltaDistance[2] += Distance[2][i];
 	    	}
-	    	p.offset(DeltaDistance[0], DeltaDistance[1],DeltaDistance[2]);
+	    	Azimuth = (float) Math.atan2((double)DeltaDistance[0], (double)DeltaDistance[0]);
+	    	p.offset(DeltaDistance[0], DeltaDistance[1],DeltaDistance[2],Azimuth);
 	    }
 }
