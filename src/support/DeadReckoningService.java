@@ -40,30 +40,35 @@ public class DeadReckoningService extends Service{
 
 	            @Override
 	            public void onSensorChanged(SensorEvent event) {
-	            	float resultVec[] = new float[4];
-	                float relativacc[]=new float [4]; 
-	                float[] Rs = new float[16];
-	                float[] I = new float[16];
 	                Sensor sensor = event.sensor;
-	                if (sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+	                //Using the Accelerometer and Orientation
+//	                if (sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+//	                	acc=event.values.clone();
+//	                }
+//	                else if (sensor.getType() == Sensor.TYPE_ORIENTATION) {
+//	                	pos=event.values.clone();
+//	                }
+//	                if (pos != null && acc != null) {
+//	                	RealAcc[0] =(float) (acc[0]*(Math.cos(pos[2])*Math.cos(pos[0])+Math.sin(pos[2])*Math.sin(pos[1])*Math.sin(pos[0])) + acc[1]*(Math.cos(pos[1])*Math.sin(pos[0])) + acc[2]*(-Math.sin(pos[2])*Math.cos(pos[0])+Math.cos(pos[2])*Math.sin(pos[1])*Math.sin(pos[0])));
+//	            		RealAcc[1] = (float) (acc[0]*(-Math.cos(pos[2])*Math.sin(pos[0])+Math.sin(pos[2])*Math.sin(pos[1])*Math.cos(pos[0])) + acc[1]*(Math.cos(pos[1])*Math.cos(pos[0])) + acc[2]*(Math.sin(pos[2])*Math.sin(pos[0])+ Math.cos(pos[2])*Math.sin(pos[1])*Math.cos(pos[0])));
+//	            		RealAcc[2] = (float) ((acc[0]*(Math.sin(pos[2])*Math.cos(pos[1])) + acc[1]*(-Math.sin(pos[1])) + acc[2]*(Math.cos(pos[2])*Math.cos(pos[1])))-9.8);
+//	            		Log.e("X is: ",Float.toString(RealAcc[0]));
+//	            		Log.e("Y is: ",Float.toString(RealAcc[1]));
+//	            		Log.e("Z is: ",Float.toString(RealAcc[2]));
+//	            		getDistance();
+//	                }
+	                if (sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION) {
 	                	acc=event.values.clone();
-	                }
-	                else if (sensor.getType() == Sensor.TYPE_ORIENTATION) {
-	                	pos=event.values.clone();
-	                }
-	                if (pos != null && acc != null) {
-	                	RealAcc[0] =(float) (acc[0]*(Math.cos(pos[2])*Math.cos(pos[0])+Math.sin(pos[2])*Math.sin(pos[1])*Math.sin(pos[0])) + acc[1]*(Math.cos(pos[1])*Math.sin(pos[0])) + acc[2]*(-Math.sin(pos[2])*Math.cos(pos[0])+Math.cos(pos[2])*Math.sin(pos[1])*Math.sin(pos[0])));
-	            		RealAcc[1] = (float) (acc[0]*(-Math.cos(pos[2])*Math.sin(pos[0])+Math.sin(pos[2])*Math.sin(pos[1])*Math.cos(pos[0])) + acc[1]*(Math.cos(pos[1])*Math.cos(pos[0])) + acc[2]*(Math.sin(pos[2])*Math.sin(pos[0])+ Math.cos(pos[2])*Math.sin(pos[1])*Math.cos(pos[0])));
-	            		RealAcc[2] = (float) ((acc[0]*(Math.sin(pos[2])*Math.cos(pos[1])) + acc[1]*(-Math.sin(pos[1])) + acc[2]*(Math.cos(pos[2])*Math.cos(pos[1])))-9.8);
-	            		Log.e("X is: ",Float.toString(RealAcc[0]));
-	            		Log.e("Y is: ",Float.toString(RealAcc[1]));
-	            		Log.e("Z is: ",Float.toString(RealAcc[2]));
-	            		getDistance();
+	                } if (pos != null){
+		                RealAcc[0] = acc[0];
+		                RealAcc[1] = acc[1];
+		                RealAcc[2] = acc[2];
+		                getDistance();
 	                }
 	            }
 	        };
-	        SensorManager.registerListener(SensorListener, SensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
-	        SensorManager.registerListener(SensorListener, SensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION), SensorManager.SENSOR_DELAY_NORMAL);
+	        SensorManager.registerListener(SensorListener, SensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION), SensorManager.SENSOR_DELAY_NORMAL);
+	        //SensorManager.registerListener(SensorListener, SensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION), SensorManager.SENSOR_DELAY_NORMAL);
 			return startId;
 	    }
 	    
