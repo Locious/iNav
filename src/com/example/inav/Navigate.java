@@ -1,5 +1,6 @@
 package com.example.inav;
 
+import uriah.mapping.*;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
@@ -13,6 +14,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -41,25 +43,38 @@ public class Navigate extends Activity implements SensorEventListener {
 		// textView.setMovementMethod(new ScrollingMovementMethod());
 		// setContentView(textView);
 		setContentView(R.layout.activity_navigate);
+		TextView textView = (TextView)findViewById(R.id.textView1);
+		//setContentView(textView);
+		
+		ESB800 floor= new ESB800();
+		floor.getPath("elevator", "813");//TODO this has hard code
+		
+		
+		String text= floor.getDirections();
+		textView.setText(text);
+		
+		
+		 
+		textView.setMovementMethod(new ScrollingMovementMethod());
 		sensor_manager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		accelerometer = (Sensor) sensor_manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		final Vibrator vibe = (Vibrator) Navigate.this.getSystemService(Context.VIBRATOR_SERVICE);
-		Button nav_button = (Button) findViewById(R.id.nav);
-		nav_button.setOnClickListener(new OnClickListener(){
-			@Override
-			public void onClick(View view){
-				vibe.vibrate(80);
-				if(nav_off) {
-					sensor_manager.registerListener((SensorEventListener) Navigate.this, accelerometer,
-							SensorManager.SENSOR_DELAY_FASTEST);
-					((Button) view).setText("Stop");
-				} else {
-					sensor_manager.unregisterListener((SensorEventListener) Navigate.this, accelerometer);
-					((Button) view).setText("Start");
-				}
-				nav_off = !nav_off;
-			}
-		});
+//		Button nav_button = (Button) findViewById(R.id.nav);
+//		nav_button.setOnClickListener(new OnClickListener(){
+//			@Override
+//			public void onClick(View view){
+//				vibe.vibrate(80);
+//				if(nav_off) {
+//					sensor_manager.registerListener((SensorEventListener) Navigate.this, accelerometer,
+//							SensorManager.SENSOR_DELAY_FASTEST);
+//					((Button) view).setText("Stop");
+//				} else {
+//					sensor_manager.unregisterListener((SensorEventListener) Navigate.this, accelerometer);
+//					((Button) view).setText("Start");
+//				}
+//				nav_off = !nav_off;
+//			}
+//		});
 		
 	}
 

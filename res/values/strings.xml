@@ -29,5 +29,7 @@
     <string name="RightOn">Right On</string>
     <string name="RightOff">Right Off</string>
     <string name="motorTest">Motor Test</string>
+    <string name="title_activity_destination">Desinations</string>
+    <string name="choose_your_destination_">Choose your destination.</string>
 
 </resources>

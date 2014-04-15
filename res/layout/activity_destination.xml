@@ -14,16 +14,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:text="@string/choose_your_destination_"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_above="@+id/expandableListView1"
         android:textColor="@color/white" />
 
     <ExpandableListView
         android:id="@+id/expandableListView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textView1" >
+        android:layout_below="@+id/textView1" >
+
     </ExpandableListView>
 
 </RelativeLayout>
